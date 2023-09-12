@@ -20,14 +20,14 @@
 		}
 	]
 
+	function handleAddTodo(event){
+		event.preventDefault();
+		console.log(event.detail.title);
+	}
+
 </script>
 
-<h2>{todos.length} Todos</h2>
-<TodoList bind:todos />
-
-<button on:click={() => {
-	todos = [];
-}}>Clear Todos</button>
+<TodoList {todos} on:addtodo={handleAddTodo}/>
 
 <style>
 </style> 

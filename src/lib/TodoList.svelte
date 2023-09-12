@@ -1,32 +1,21 @@
 <script>
 	import Button from './Button.svelte';
-	import { v4 as uuid } from 'uuid';
+    import {createEventDispatcher} from "svelte";
 
 	export let todos = [];
 	// let input;
 	let inputText = '';
 
-	function handleAddTodo() {
-		// 1st way
-		// if (!inputText) return;
-		// todos.push({
-		//     title:inputText,
-		//     id:uuid(),
-		//     completed:false
-		// });
-		// todos = todos;
+    const dispatch = createEventDispatcher();
 
-		//2nd way
-		todos = [
-			...todos,
-			{
-				title: inputText,
-				id: uuid(),
-				completed: false
-			}
-		];
-        inputText = '';
-	}
+	function handleAddTodo() { 
+        const isNotCanceled = dispatch('addtodo', {
+            title: inputText
+        }, {cancelable: true});
+        if (isNotCanceled) {
+            console.log("hello");
+        }
+    }
 </script>
 
 <div class="todo-list-wrapper">
