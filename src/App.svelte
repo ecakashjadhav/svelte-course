@@ -2,7 +2,7 @@
 	import TodoList from "./lib/TodoList.svelte";
 	import {v4 as uuid} from "uuid";
 
-	const todos = [
+	let todos = [
 		{
 		  id: uuid(),
           title: "Todo 1",
@@ -22,8 +22,12 @@
 
 </script>
 
+<h2>{todos.length} Todos</h2>
+<TodoList bind:todos />
 
-<TodoList {todos} />
+<button on:click={() => {
+	todos = [];
+}}>Clear Todos</button>
 
 <style>
-</style>
+</style> 
