@@ -7,7 +7,7 @@
 	let isLeftHovered=false;
 </script>
 
-<button
+<button on:click
 	style:--buttonBgColor={bgColor}
 	style:--buttonTextColor={textColor}
 	class:size-lg={size === 'large'}
