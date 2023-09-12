@@ -3,6 +3,8 @@
 	export let shadow = false;
 	export let bgColor = 'inherit';
 	export let textColor = 'inherit';
+	// export let disabled = false; {...$$restProps} use to get passed value from App Button
+
 
 	let isLeftHovered=false;
 </script>
@@ -14,6 +16,7 @@
 	class:size-sm={size === 'small'}
 	class:has-left={$$slots.leftContent}
 	class:shadow
+	{...$$restProps}
  >
 	{#if $$slots.leftContent}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -53,6 +56,10 @@
 		}
 		&.shadow {
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
 		}
 	}
 </style>
