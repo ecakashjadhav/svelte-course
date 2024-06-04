@@ -14,12 +14,22 @@
             inputText = "";
         }
     }
+    
+    function handleRemoveTodo(id){
+        dispatch('removetodo', {id});
+    }
 </script>
 
 <div class="todo-list-wrapper">
     <ul>
         {#each todos as todo}
-            <li>{todo.title}</li>
+            <li>
+                <label>
+                    <input type="checkbox" checked={todo.completed} />
+                    {todo.title}
+                </label>
+                <button on:click={() => handleRemoveTodo(todo.id)}>Remove</button>
+            </li>
         {/each}
     </ul>
     <form class="add-todo-form" on:submit|preventDefault={handleAddTodo}>
