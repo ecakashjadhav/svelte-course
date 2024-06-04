@@ -1,10 +1,11 @@
 
+<svelte:options immutable={true} />
 
 <script>
     import TodoLists from './lib/TodoLists.svelte';
     import {v4 as uuid} from "uuid";
 
-    const todos = [
+    let todos = [
         {
             id: uuid(),
             title: "Todo1",
@@ -21,7 +22,13 @@
     ]
 
     function handleAddTodo(event){
-        console.log(event.detail.title)
+        // event.preventDefault();
+        todos.push({
+            id: uuid(),
+            title: event.detail.title,
+            completed: false
+        });
+        todos = todos;
     }
 </script>
 

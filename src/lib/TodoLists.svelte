@@ -7,9 +7,12 @@
     const dispatch = createEventDispatcher();
 
     function handleAddTodo(){
-        dispatch('addtodo', {
+        const isNotCancelled = dispatch('addtodo', {
             title: inputText
-        })
+        }, {cancelable: true});
+        if (isNotCancelled){
+            inputText = "";
+        }
     }
 </script>
 
