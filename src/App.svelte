@@ -19,10 +19,14 @@
             completed: true
         },
     ]
+
+    function handleAddTodo(event){
+        console.log(event.detail.title)
+    }
 </script>
 
 
-<TodoLists {todos} />
+<TodoLists {todos} on:addtodo={handleAddTodo}/>
 
 <style>
 
